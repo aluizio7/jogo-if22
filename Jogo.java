@@ -79,17 +79,8 @@ public class Jogo {
     }
 
     private void salvarResultado(String vencedor) {
-        File arquivo = new File(arquivoResultados);
-        boolean existe = arquivo.exists();
-
         try (FileWriter writer = new FileWriter(arquivoResultados, true)) {
-            if (!existe) {
-                writer.write("+-----------------+\n");
-                writer.write("|    Vencedor     |\n");
-                writer.write("+-----------------+\n");
-            }
-            writer.write(String.format("| %-15s |\n", vencedor));
-            writer.write("+-----------------+\n");
+            writer.write(vencedor + "\n");
         } catch (IOException e) {
             System.out.println("Erro ao salvar resultado: " + e.getMessage());
         }
